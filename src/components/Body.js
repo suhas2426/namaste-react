@@ -3,6 +3,7 @@ import "../../index.css";
 import { RES_URL } from "../utils/contants";
 import ResCard from "./ResCard";
 import ShimmerUI from "./ShimmerUI";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
@@ -40,7 +41,11 @@ const Body = () => {
       </div>
       <div className="res-container">
         {listOfRestaurants.map((restaurent) => {
-          return <ResCard key={restaurent.info.id} resData={restaurent.info} />;
+          return (
+            <Link to={"/restaurent/" + restaurent.info.id}>
+              <ResCard key={restaurent.info.id} resData={restaurent.info} />
+            </Link>
+          );
         })}
       </div>
     </div>
